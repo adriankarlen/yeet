@@ -9,14 +9,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/herdr"
+	"github.com/adriankarlen/yeet/internal/herdr"
 	"github.com/stretchr/testify/require"
 )
 
 const (
 	benchmarkWorkspaceCount = 100
-	benchmarkHelperEnv      = "HERDR_SESH_BENCHMARK_HELPER"
-	benchmarkHelperModeEnv  = "HERDR_SESH_BENCHMARK_HELPER_MODE"
+	benchmarkHelperEnv      = "HERDR_YEET_BENCHMARK_HELPER"
+	benchmarkHelperModeEnv  = "HERDR_YEET_BENCHMARK_HELPER_MODE"
 )
 
 type benchmarkHerdrRunner struct {

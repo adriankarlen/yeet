@@ -1,6 +1,6 @@
 package config
 
-import "github.com/adriankarlen/herdr-sesh-minimal/internal/model"
+import "github.com/adriankarlen/yeet/internal/model"
 
 const (
 	// Preview output is captured through sh rather than a TTY, so eza's

@@ -13,7 +13,7 @@ import (
 
 	"github.com/pelletier/go-toml/v2"
 
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/model"
+	"github.com/adriankarlen/yeet/internal/model"
 )
 
 const NativeVersion = 1

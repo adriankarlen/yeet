@@ -3,8 +3,8 @@ package sources
 import (
 	"context"
 
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/herdr"
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/model"
+	"github.com/adriankarlen/yeet/internal/herdr"
+	"github.com/adriankarlen/yeet/internal/model"
 )
 
 type HerdrWorkspaces struct{ Client herdr.Client }

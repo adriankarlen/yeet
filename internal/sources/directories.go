@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/model"
+	"github.com/adriankarlen/yeet/internal/model"
 )
 
 type DirectPath struct {

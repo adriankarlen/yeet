@@ -30,7 +30,7 @@ const (
 type fileKind int
 
 const (
-	// kindExplicit paths come from --config or HERDR_SESH_CONFIG and may hold
+	// kindExplicit paths come from --config or HERDR_YEET_CONFIG and may hold
 	// either schema; a top-level version key selects native decoding.
 	kindExplicit fileKind = iota
 	kindNative
@@ -112,13 +112,13 @@ func resolve(opts LoadOptions) (string, fileKind, error) {
 		}
 		return p, kindExplicit, nil
 	}
-	if v := env["HERDR_SESH_CONFIG"]; v != "" {
+	if v := env["HERDR_YEET_CONFIG"]; v != "" {
 		p := ExpandHome(v, home)
 		if err := statConfigFile(p); err != nil {
 			if os.IsNotExist(err) {
-				return "", kindExplicit, fmt.Errorf("HERDR_SESH_CONFIG %s: %w", p, os.ErrNotExist)
+				return "", kindExplicit, fmt.Errorf("HERDR_YEET_CONFIG %s: %w", p, os.ErrNotExist)
 			}
-			return "", kindExplicit, fmt.Errorf("HERDR_SESH_CONFIG %s: %w", p, err)
+			return "", kindExplicit, fmt.Errorf("HERDR_YEET_CONFIG %s: %w", p, err)
 		}
 		return p, kindExplicit, nil
 	}
@@ -135,8 +135,8 @@ func resolve(opts LoadOptions) (string, fileKind, error) {
 	}
 	if home != "" {
 		candidates = append(candidates,
-			candidate{filepath.Join(home, ".config", "herdr-sesh", NativeFileName), kindNative},
-			candidate{filepath.Join(home, ".config", "herdr-sesh", LegacyFileName), kindLegacy},
+			candidate{filepath.Join(home, ".config", "yeet", NativeFileName), kindNative},
+			candidate{filepath.Join(home, ".config", "yeet", LegacyFileName), kindLegacy},
 			candidate{filepath.Join(home, ".config", "sesh", LegacyFileName), kindLegacy},
 		)
 	}

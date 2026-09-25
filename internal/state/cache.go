@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/model"
+	"github.com/adriankarlen/yeet/internal/model"
 )
 
 type SessionCache struct {

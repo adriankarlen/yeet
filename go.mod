@@ -1,4 +1,4 @@
-module github.com/adriankarlen/herdr-sesh-minimal
+module github.com/adriankarlen/yeet
 
 go 1.26.5
 

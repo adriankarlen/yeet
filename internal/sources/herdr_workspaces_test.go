@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/herdr"
+	"github.com/adriankarlen/yeet/internal/herdr"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

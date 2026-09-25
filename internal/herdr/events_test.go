@@ -25,7 +25,7 @@ func TestWatchWorkspaceEventsReconcilesDelayedProtocol20Replay(t *testing.T) {
 			return
 		}
 		enc := json.NewEncoder(stream)
-		if err := enc.Encode(map[string]any{"id": "herdr-sesh-history", "result": map[string]any{"type": "subscription_started"}}); err != nil {
+		if err := enc.Encode(map[string]any{"id": "herdr-yeet-history", "result": map[string]any{"type": "subscription_started"}}); err != nil {
 			_ = stream.Close()
 			serverDone <- err
 			return
@@ -102,7 +102,7 @@ func TestWatchWorkspaceEventsPreservesInterruptedProtocol20Replay(t *testing.T) 
 			return
 		}
 		enc := json.NewEncoder(stream)
-		if err := enc.Encode(map[string]any{"id": "herdr-sesh-history", "result": map[string]any{"type": "subscription_started"}}); err != nil {
+		if err := enc.Encode(map[string]any{"id": "herdr-yeet-history", "result": map[string]any{"type": "subscription_started"}}); err != nil {
 			_ = stream.Close()
 			serverDone <- err
 			return
@@ -159,7 +159,7 @@ func TestWatchWorkspaceEventsRejectsPreSubscriptionProtocol(t *testing.T) {
 		}
 		defer func() { _ = stream.Close() }()
 		if err := json.NewEncoder(stream).Encode(map[string]any{
-			"id": "herdr-sesh-history", "result": map[string]any{"type": "subscription_started"},
+			"id": "herdr-yeet-history", "result": map[string]any{"type": "subscription_started"},
 		}); err != nil {
 			serverDone <- err
 			return
@@ -171,7 +171,7 @@ func TestWatchWorkspaceEventsRejectsPreSubscriptionProtocol(t *testing.T) {
 		}
 		defer func() { _ = conn.Close() }()
 		serverDone <- json.NewEncoder(conn).Encode(map[string]any{
-			"id": "herdr-sesh-history-ping",
+			"id": "herdr-yeet-history-ping",
 			"result": map[string]any{
 				"type": "pong", "version": "0.8.1", "protocol": 19,
 			},
@@ -199,7 +199,7 @@ func TestWatchWorkspaceEventsBuffersProtocol21EventsDuringProtocolProbe(t *testi
 		case "events.subscribe":
 			stream = first
 			if err := json.NewEncoder(stream).Encode(map[string]any{
-				"id": "herdr-sesh-history", "result": map[string]any{"type": "subscription_started"},
+				"id": "herdr-yeet-history", "result": map[string]any{"type": "subscription_started"},
 			}); err != nil {
 				serverDone <- err
 				return
@@ -235,7 +235,7 @@ func TestWatchWorkspaceEventsBuffersProtocol21EventsDuringProtocolProbe(t *testi
 				return
 			}
 			if err := json.NewEncoder(stream).Encode(map[string]any{
-				"id": "herdr-sesh-history", "result": map[string]any{"type": "subscription_started"},
+				"id": "herdr-yeet-history", "result": map[string]any{"type": "subscription_started"},
 			}); err != nil {
 				serverDone <- err
 				return
@@ -286,7 +286,7 @@ func TestWatchWorkspaceEventsNoHistoryKeepsSnapshotWindowEvent(t *testing.T) {
 		}
 		defer func() { _ = stream.Close() }()
 		enc := json.NewEncoder(stream)
-		if err := enc.Encode(map[string]any{"id": "herdr-sesh-history", "result": map[string]any{"type": "subscription_started"}}); err != nil {
+		if err := enc.Encode(map[string]any{"id": "herdr-yeet-history", "result": map[string]any{"type": "subscription_started"}}); err != nil {
 			serverDone <- err
 			return
 		}
@@ -336,7 +336,7 @@ func TestWatchWorkspaceEventsReconnectsAfterUnexpectedEOF(t *testing.T) {
 				return
 			}
 			enc := json.NewEncoder(stream)
-			if err := enc.Encode(map[string]any{"id": "herdr-sesh-history", "result": map[string]any{"type": "subscription_started"}}); err != nil {
+			if err := enc.Encode(map[string]any{"id": "herdr-yeet-history", "result": map[string]any{"type": "subscription_started"}}); err != nil {
 				_ = stream.Close()
 				serverDone <- err
 				return
@@ -398,7 +398,7 @@ func TestWatchWorkspaceEventsReconnectsAfterUnexpectedEOF(t *testing.T) {
 
 func listenTestSocket(t *testing.T) (net.Listener, string) {
 	t.Helper()
-	dir, err := os.MkdirTemp("/tmp", "herdr-sesh-events-")
+	dir, err := os.MkdirTemp("/tmp", "herdr-yeet-events-")
 	require.NoError(t, err)
 	t.Cleanup(func() { _ = os.RemoveAll(dir) })
 	socketPath := filepath.Join(dir, "herdr.sock")
@@ -446,7 +446,7 @@ func serveCompatiblePing(listener net.Listener, protocol int) error {
 
 func encodeCompatiblePing(conn net.Conn, protocol int) error {
 	return json.NewEncoder(conn).Encode(map[string]any{
-		"id": "herdr-sesh-history-ping",
+		"id": "herdr-yeet-history-ping",
 		"result": map[string]any{
 			"type": "pong", "version": "compatible", "protocol": protocol,
 		},
@@ -463,7 +463,7 @@ func snapshotResponse(focusedWorkspaceID string, workspaceIDs ...string) map[str
 		workspaces = append(workspaces, map[string]any{"workspace_id": workspaceID})
 	}
 	return map[string]any{
-		"id": "herdr-sesh-history-snapshot",
+		"id": "herdr-yeet-history-snapshot",
 		"result": map[string]any{
 			"type": "session_snapshot",
 			"snapshot": map[string]any{

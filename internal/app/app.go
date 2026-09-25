@@ -12,16 +12,16 @@ import (
 	"path/filepath"
 	"strings"
 
-	clonepkg "github.com/adriankarlen/herdr-sesh-minimal/internal/clone"
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/config"
-	connectpkg "github.com/adriankarlen/herdr-sesh-minimal/internal/connect"
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/herdr"
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/model"
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/namer"
-	pickerpkg "github.com/adriankarlen/herdr-sesh-minimal/internal/picker"
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/preview"
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/sources"
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/state"
+	clonepkg "github.com/adriankarlen/yeet/internal/clone"
+	"github.com/adriankarlen/yeet/internal/config"
+	connectpkg "github.com/adriankarlen/yeet/internal/connect"
+	"github.com/adriankarlen/yeet/internal/herdr"
+	"github.com/adriankarlen/yeet/internal/model"
+	"github.com/adriankarlen/yeet/internal/namer"
+	pickerpkg "github.com/adriankarlen/yeet/internal/picker"
+	"github.com/adriankarlen/yeet/internal/preview"
+	"github.com/adriankarlen/yeet/internal/sources"
+	"github.com/adriankarlen/yeet/internal/state"
 )
 
 var Version = "dev"
@@ -39,7 +39,7 @@ func (a *App) Run(ctx context.Context, args []string) error {
 	}
 	switch args[0] {
 	case "--version", "version":
-		_, err := fmt.Fprintf(a.Out, "herdr-sesh-minimal %s\n", Version)
+		_, err := fmt.Fprintf(a.Out, "yeet %s\n", Version)
 		return err
 	case "list":
 		return a.list(ctx, args[1:])
@@ -63,7 +63,7 @@ func (a *App) Run(ctx context.Context, args []string) error {
 }
 
 func (a *App) usage() error {
-	_, err := fmt.Fprintln(a.Out, "herdr-sesh-minimal list|connect|preview|clone|root|last|picker|plugin|--version")
+	_, err := fmt.Fprintln(a.Out, "yeet list|connect|preview|clone|root|last|picker|plugin|--version")
 	return err
 }
 
@@ -184,7 +184,7 @@ func (a *App) picker(ctx context.Context, args []string) error {
 		DefaultPreviewCommand: cfg.DefaultSessionConfig.PreviewCommand,
 	}
 
-	useFZF := *fzfPicker || strings.EqualFold(os.Getenv("HERDR_SESH_PICKER"), "fzf")
+	useFZF := *fzfPicker || strings.EqualFold(os.Getenv("HERDR_YEET_PICKER"), "fzf")
 	var selected model.Session
 	var ok bool
 
@@ -380,7 +380,7 @@ func (a *App) plugin(ctx context.Context, args []string) error {
 	}
 	switch args[0] {
 	case "open-picker":
-		return herdr.NewCLIClient().PluginPaneOpen(ctx, "adriankarlen.sesh-minimal", "picker", "overlay")
+		return herdr.NewCLIClient().PluginPaneOpen(ctx, "adriankarlen.yeet", "picker", "overlay")
 	case "watch-history":
 		return a.watchHistory(ctx)
 	default:

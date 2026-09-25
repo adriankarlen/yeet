@@ -3,8 +3,8 @@ package picker_test
 import (
 	"testing"
 
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/model"
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/picker"
+	"github.com/adriankarlen/yeet/internal/model"
+	"github.com/adriankarlen/yeet/internal/picker"
 	"github.com/stretchr/testify/assert"
 )
 

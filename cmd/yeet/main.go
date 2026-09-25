@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/app"
+	"github.com/adriankarlen/yeet/internal/app"
 )
 
 func main() {

@@ -81,7 +81,7 @@ func watchWorkspaceEventsOnce(ctx context.Context, socketPath string, onFocused,
 	stopClose := context.AfterFunc(ctx, func() { _ = conn.Close() })
 	defer stopClose()
 
-	request := eventSubscribeRequest{ID: "herdr-sesh-history", Method: "events.subscribe"}
+	request := eventSubscribeRequest{ID: "herdr-yeet-history", Method: "events.subscribe"}
 	request.Params.Subscriptions = []eventSubscription{{Type: "workspace.focused"}, {Type: "workspace.closed"}}
 	if err := json.NewEncoder(conn).Encode(request); err != nil {
 		return true, fmt.Errorf("subscribe to Herdr workspace events: %w", err)
@@ -243,7 +243,7 @@ func loadServerProtocol(ctx context.Context, socketPath string) (int, error) {
 		ID     string   `json:"id"`
 		Method string   `json:"method"`
 		Params struct{} `json:"params"`
-	}{ID: "herdr-sesh-history-ping", Method: "ping"}
+	}{ID: "herdr-yeet-history-ping", Method: "ping"}
 	if err := json.NewEncoder(conn).Encode(request); err != nil {
 		return 0, fmt.Errorf("ping Herdr server: %w", err)
 	}
@@ -279,7 +279,7 @@ func loadSessionSnapshot(ctx context.Context, socketPath string) (sessionSnapsho
 		ID     string   `json:"id"`
 		Method string   `json:"method"`
 		Params struct{} `json:"params"`
-	}{ID: "herdr-sesh-history-snapshot", Method: "session.snapshot"}
+	}{ID: "herdr-yeet-history-snapshot", Method: "session.snapshot"}
 	if err := json.NewEncoder(conn).Encode(request); err != nil {
 		return sessionSnapshot{}, fmt.Errorf("request Herdr session snapshot: %w", err)
 	}

@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/config"
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/herdr"
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/model"
+	"github.com/adriankarlen/yeet/internal/config"
+	"github.com/adriankarlen/yeet/internal/herdr"
+	"github.com/adriankarlen/yeet/internal/model"
 )
 
 type Plan struct {

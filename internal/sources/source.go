@@ -3,7 +3,7 @@ package sources
 import (
 	"context"
 
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/model"
+	"github.com/adriankarlen/yeet/internal/model"
 )
 
 type Source interface {

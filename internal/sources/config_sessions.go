@@ -3,8 +3,8 @@ package sources
 import (
 	"context"
 
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/config"
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/model"
+	"github.com/adriankarlen/yeet/internal/config"
+	"github.com/adriankarlen/yeet/internal/model"
 )
 
 type ConfigSessions struct {

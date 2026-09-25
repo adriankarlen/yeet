@@ -13,7 +13,7 @@ import (
 	"testing"
 
 	tea "charm.land/bubbletea/v2"
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/model"
+	"github.com/adriankarlen/yeet/internal/model"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -358,7 +358,7 @@ func TestLegacyLoadWarnsOnStderrWriter(t *testing.T) {
 }
 
 func TestNativeFixtureLoads(t *testing.T) {
-	cfg, _, err := Load(LoadOptions{Path: filepath.Join("..", "..", "testdata", "herdr-sesh.toml"), Warn: &bytes.Buffer{}})
+	cfg, _, err := Load(LoadOptions{Path: filepath.Join("..", "..", "testdata", "yeet.toml"), Warn: &bytes.Buffer{}})
 	require.NoError(t, err)
 	require.Len(t, cfg.SessionConfigs, 1)
 	assert.Equal(t, "sesh", cfg.SessionConfigs[0].Name)
@@ -369,7 +369,7 @@ func TestDiscoveryOrderAndPrecedence(t *testing.T) {
 	pluginDir := filepath.Join(home, "plugin-config")
 	mkdirs := []string{
 		pluginDir,
-		filepath.Join(home, ".config", "herdr-sesh"),
+		filepath.Join(home, ".config", "yeet"),
 		filepath.Join(home, ".config", "sesh"),
 	}
 	for _, d := range mkdirs {
@@ -387,8 +387,8 @@ func TestDiscoveryOrderAndPrecedence(t *testing.T) {
 	order := []string{
 		filepath.Join("plugin-config", NativeFileName),
 		filepath.Join("plugin-config", LegacyFileName),
-		filepath.Join(".config", "herdr-sesh", NativeFileName),
-		filepath.Join(".config", "herdr-sesh", LegacyFileName),
+		filepath.Join(".config", "yeet", NativeFileName),
+		filepath.Join(".config", "yeet", LegacyFileName),
 		filepath.Join(".config", "sesh", LegacyFileName),
 	}
 	// Create from lowest precedence upward; each added higher candidate must win.
@@ -403,7 +403,7 @@ func TestDiscoveryOrderAndPrecedence(t *testing.T) {
 func TestMissingEnvConfigErrors(t *testing.T) {
 	_, err := ResolvePath(LoadOptions{
 		Home: t.TempDir(),
-		Env:  map[string]string{"HERDR_SESH_CONFIG": "/nope/missing.toml"},
+		Env:  map[string]string{"HERDR_YEET_CONFIG": "/nope/missing.toml"},
 	})
 	require.Error(t, err)
 }
@@ -421,13 +421,13 @@ func TestResolvePathPropagatesFilesystemErrors(t *testing.T) {
 	t.Run("environment path", func(t *testing.T) {
 		_, err := ResolvePath(LoadOptions{
 			Home: home,
-			Env:  map[string]string{"HERDR_SESH_CONFIG": filepath.Join(notDir, NativeFileName)},
+			Env:  map[string]string{"HERDR_YEET_CONFIG": filepath.Join(notDir, NativeFileName)},
 		})
 		require.ErrorIs(t, err, syscall.ENOTDIR)
 	})
 
 	t.Run("default discovery", func(t *testing.T) {
-		fallbackDir := filepath.Join(home, ".config", "herdr-sesh")
+		fallbackDir := filepath.Join(home, ".config", "yeet")
 		require.NoError(t, os.MkdirAll(fallbackDir, 0700))
 		mustWrite(t, filepath.Join(fallbackDir, NativeFileName), "version = 1\n")
 

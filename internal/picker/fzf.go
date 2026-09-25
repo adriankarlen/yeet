@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"strings"
 
-	sessionmodel "github.com/adriankarlen/herdr-sesh-minimal/internal/model"
+	sessionmodel "github.com/adriankarlen/yeet/internal/model"
 )
 
 const defaultPrompt = " "

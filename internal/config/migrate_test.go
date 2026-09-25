@@ -80,7 +80,7 @@ func TestMigrateSharedSeshDirUsesFallback(t *testing.T) {
 	seshDir := filepath.Join(home, ".config", "sesh")
 	require.NoError(t, os.MkdirAll(seshDir, 0700))
 	mustWrite(t, filepath.Join(seshDir, LegacyFileName), "cache = true\n")
-	fallback := filepath.Join(home, ".config", "herdr-sesh")
+	fallback := filepath.Join(home, ".config", "yeet")
 
 	_, native, err := Migrate(LoadOptions{Home: home, Env: map[string]string{}}, fallback, false)
 	require.NoError(t, err)
@@ -96,7 +96,7 @@ func TestMigrateRelativeSharedSeshPathUsesFallback(t *testing.T) {
 	require.NoError(t, os.MkdirAll(seshDir, 0700))
 	legacy := filepath.Join(seshDir, LegacyFileName)
 	mustWrite(t, legacy, "cache = true\n")
-	fallback := filepath.Join(home, ".config", "herdr-sesh")
+	fallback := filepath.Join(home, ".config", "yeet")
 
 	oldWD, err := os.Getwd()
 	require.NoError(t, err)
@@ -245,7 +245,7 @@ func TestMigrateForceRejectsUnrelatedTarget(t *testing.T) {
 	legacy := filepath.Join(d, LegacyFileName)
 	target := filepath.Join(d, NativeFileName)
 	mustWrite(t, legacy, "cache = true\n")
-	const unrelated = "not a herdr-sesh config\n"
+	const unrelated = "not a herdr-yeet config\n"
 	//nolint:gosec // an existing non-private target verifies forced migration rejects it unchanged.
 	require.NoError(t, os.WriteFile(target, []byte(unrelated), 0644))
 

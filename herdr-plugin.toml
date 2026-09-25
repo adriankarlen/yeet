@@ -1,5 +1,5 @@
-id = "adriankarlen.sesh-minimal"
-name = "Sesh Minimal for Herdr"
+id = "adriankarlen.yeet"
+name = "Yeet for Herdr"
 version = "0.1.0"
 min_herdr_version = "0.8.2"
 description = "Minimal Sesh-style workspace/session manager for Herdr using gum"
@@ -9,37 +9,37 @@ platforms = ["linux", "macos"]
 command = [
   "go",
   "build",
-  "-ldflags=-X=github.com/adriankarlen/herdr-sesh-minimal/internal/app.Version=0.1.0",
+  "-ldflags=-X=github.com/adriankarlen/yeet/internal/app.Version=0.1.0",
   "-o",
   "bin/",
-  "./cmd/herdr-sesh-minimal",
+  "./cmd/yeet",
 ]
 
 [[startup]]
-command = ["./bin/herdr-sesh-minimal", "plugin", "watch-history"]
+command = ["./bin/yeet", "plugin", "watch-history"]
 
 [[events]]
 on = "workspace.focused"
-command = ["./bin/herdr-sesh-minimal", "plugin", "watch-history"]
+command = ["./bin/yeet", "plugin", "watch-history"]
 
 [[events]]
 on = "workspace.closed"
-command = ["./bin/herdr-sesh-minimal", "plugin", "watch-history"]
+command = ["./bin/yeet", "plugin", "watch-history"]
 
 [[actions]]
 id = "open-picker"
-title = "Open Sesh Minimal Picker"
+title = "Open Yeet Picker"
 contexts = ["workspace", "pane"]
-command = ["./bin/herdr-sesh-minimal", "plugin", "open-picker"]
+command = ["./bin/yeet", "plugin", "open-picker"]
 
 [[actions]]
 id = "last"
 title = "Switch to Previous Workspace"
 contexts = ["workspace", "pane"]
-command = ["./bin/herdr-sesh-minimal", "last"]
+command = ["./bin/yeet", "last"]
 
 [[panes]]
 id = "picker"
-title = "Sesh Picker"
+title = "Yeet Picker"
 placement = "overlay"
-command = ["./bin/herdr-sesh-minimal", "picker"]
+command = ["./bin/yeet", "picker"]

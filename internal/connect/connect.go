@@ -5,10 +5,10 @@ import (
 	"errors"
 	"os"
 
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/herdr"
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/model"
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/sources"
-	"github.com/adriankarlen/herdr-sesh-minimal/internal/startup"
+	"github.com/adriankarlen/yeet/internal/herdr"
+	"github.com/adriankarlen/yeet/internal/model"
+	"github.com/adriankarlen/yeet/internal/sources"
+	"github.com/adriankarlen/yeet/internal/startup"
 )
 
 type Options struct {
