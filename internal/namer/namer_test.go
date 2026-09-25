@@ -14,9 +14,9 @@ import (
 func TestNameFromGitRemote(t *testing.T) {
 	d := t.TempDir()
 	run(t, d, "git", "init")
-	run(t, d, "git", "remote", "add", "origin", "git@github.com:fullerzz/herdr-plugin-sesh.git")
+	run(t, d, "git", "remote", "add", "origin", "git@github.com:adriankarlen/yeet.git")
 	got := Namer{}.Name(context.Background(), d, 1)
-	assert.Equal(t, "herdr-plugin-sesh", got)
+	assert.Equal(t, "yeet", got)
 }
 func TestNameFromDirectoryLength(t *testing.T) {
 	got := Namer{}.Name(context.Background(), "/tmp/parent/child", 2)
